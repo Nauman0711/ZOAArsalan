@@ -4,7 +4,7 @@ export const getLeadsApi = async () => {
     const data = await get_request({ target: leadTarget });
     return data;
 }
-export const uploadFileApi = ({ body, onUploadProgress }) => {
-    const data = post_request_formData({ target: uploadFileTarget, body, onUploadProgress });
+export const uploadFileApi = async ({ body, onUploadProgress }) => {
+    const data = await post_request_formData({ target: uploadFileTarget, body, onUploadProgress });
     return data;
 }

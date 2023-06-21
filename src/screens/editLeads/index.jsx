@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { FlatList, TextInput, View, Text, Image } from "react-native";
 import * as Progress from 'react-native-progress';
 import { useDispatch, useSelector } from "react-redux";
+import { setFiles } from "../../redux/editLeads/reducer";
 import ActivityLoader from "../../components/loader/activityLoader";
 import { AddBtnIcon } from "../../assets/images/svg";
 import colors from "../../theme/color";
@@ -21,7 +22,6 @@ const EditLeads = ({ navigation, route }) => {
 
     useEffect(() => {
         // dispatch(setFiles([]))
-        console.log(files, "adadada");
     }, [])
     return (
         <ScreenContainer>

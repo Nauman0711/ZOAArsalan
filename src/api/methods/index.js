@@ -26,7 +26,7 @@ export const post_request_formData = async ({ target, body, onUploadProgress }) 
                 return 'Error'
             })
         if (response?.status == 200) {
-            return response.data
+            return response
         } else {
             console.log(response);
             return 'Error'

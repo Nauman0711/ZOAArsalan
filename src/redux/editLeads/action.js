@@ -32,7 +32,7 @@ export const updateProfilePicture = async () => {
         }
         else {
             await store.dispatch(setFiles(response.assets))
-            const uploadPromises = response.assets.map((file) => {
+            const uploadPromises = response.assets.map(async(file) => {
                 const body = new FormData();
                 body.append('file', {
                     uri: file.uri,
@@ -41,12 +41,13 @@ export const updateProfilePicture = async () => {
                 })
                 body.append('filename', file.fileName)
                 body.append('type', file.type)
-                return uploadFileApi({
+                const response = await uploadFileApi({
                     body, onUploadProgress: (progressEvent) => {
                         const progress = progressEvent.loaded / progressEvent.total;
                         store.dispatch(updateFileProgress(({ sFile: file, progress })));
                     }
                 })
+               return response.data
             })
             const responses = await Promise.all(uploadPromises);
             store.dispatch(setSelectedFiles(responses))
