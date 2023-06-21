@@ -19,5 +19,5 @@ const slice = createSlice({
         }),
     },
 });
-export const { setLeadsData, setIsLoading, setErrorText } = slice.actions;
+export const { setLeadsData, setIsLoading, setErrorText, } = slice.actions;
 export const leadsReducer = slice.reducer;

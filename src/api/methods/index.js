@@ -18,6 +18,24 @@ export const post_request = async ({ target, body }) => {
         return 'Error'
     }
 }
+export const post_request_formData = async ({ target, body, onUploadProgress }) => {
+    try {
+        const response = await instanceFormData({ onUploadProgress }).post(target, body)
+            .catch((e) => {
+                console.log(JSON.stringify(e));
+                return 'Error'
+            })
+        if (response?.status == 200) {
+            return response.data
+        } else {
+            console.log(response);
+            return 'Error'
+        }
+    } catch (e) {
+        console.log(JSON.stringify(e));
+        return 'Error'
+    }
+}
 export const get_request = async ({ target, params }) => {
     try {
         const response = await instance().get(target, { params })

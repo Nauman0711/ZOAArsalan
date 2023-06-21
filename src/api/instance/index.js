@@ -2,13 +2,14 @@ import axios from "axios";
 import { baseURL } from "../baseURL";
 import { store } from "../../redux/store/store";
 
-const createInstance = ({ headers, transformRequest }) => {
+const createInstance = ({ headers, transformRequest, onUploadProgress }) => {
     const userData = store.getState().userReducer.userData;
     const authorizationHeader = headers?.Authorization || (userData?.token && `Bearer ${userData.token}`);
     return axios.create({
         baseURL,
         headers: authorizationHeader ? { ...headers, Authorization: authorizationHeader } : headers,
-        ...transformRequest
+        ...transformRequest,
+        ...onUploadProgress
     });
 };
 
@@ -24,9 +25,10 @@ export const instanceWithoutHeader = () => axios.create({
     baseURL,
 });
 
-export const instanceFormData = () => createInstance({
+export const instanceFormData = ({ onUploadProgress }) => createInstance({
     headers: {
         "Content-type": "multipart/form-data",
     },
-    transformRequest: { transformRequest: (data) => { return data } }
+    transformRequest: { transformRequest: (data) => { return data } },
+    onUploadProgress: { onUploadProgress }
 });
