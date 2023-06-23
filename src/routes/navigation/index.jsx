@@ -11,6 +11,7 @@ import Tabs from '../bottomNavigation';
 import ChangePassword from '../../screens/authentications/changePassword';
 import SuccessfullyUpdated from '../../screens/authentications/changePassword/components/successfullyUpdated';
 import colors from '../../theme/color';
+import Submissions from '../../screens/submission';
 
 const Navigation = () => {
     const Stack = createNativeStackNavigator()
@@ -23,6 +24,7 @@ const Navigation = () => {
                 <Stack.Screen options={{ headerShown: false }} name={"Tabs"} component={Tabs} />
                 <Stack.Screen options={{ headerShown: false }} name={"SuccessfullyUpdated"} component={SuccessfullyUpdated} />
                 <Stack.Screen options={{ headerTitle: '', headerShadowVisible: false, headerTintColor: colors.fontBlack }} name={"EditLeads"} component={EditLeads} />
+                <Stack.Screen options={{ headerTitle: '', headerShadowVisible: false, headerTintColor: colors.fontBlack }} name={"Submissions"} component={Submissions} />
             </Stack.Navigator>
         </NavigationContainer>
     )

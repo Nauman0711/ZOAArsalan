@@ -7,6 +7,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 8,
+        marginVertical: 10
     },
     enableBtn: {
         backgroundColor: colors.green

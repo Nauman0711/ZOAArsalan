@@ -7,10 +7,9 @@ export const post_request = async ({ target, body }) => {
                 console.log(JSON.stringify(e));
                 return 'Error'
             })
-        if (response?.status == 200) {
+        if (response?.status >= 200 && response?.status < 300) {
             return response
         } else {
-            console.log(response);
             return 'Error'
         }
     } catch (e) {
@@ -25,7 +24,7 @@ export const post_request_formData = async ({ target, body, onUploadProgress }) 
                 console.log(JSON.stringify(e));
                 return 'Error'
             })
-        if (response?.status == 200) {
+        if (response?.status >= 200 && response?.status < 300) {
             return response
         } else {
             console.log(response);
@@ -42,7 +41,7 @@ export const get_request = async ({ target, params }) => {
             .catch((e) => {
                 return 'Error'
             })
-        if (response?.status == 200) {
+        if (response?.status >= 200 && response?.status < 300) {
             return response
         } else {
             return 'Error'
@@ -58,7 +57,7 @@ export const get_withoutHeader = async ({ target, body }) => {
             .catch((e) => {
                 return 'Error'
             })
-        if (response?.status == 200) {
+        if (response?.status >= 200 && response?.status < 300) {
             return response
         } else {
             return 'Error'
@@ -74,7 +73,7 @@ export const put_request = async ({ target, body }) => {
             .catch((e) => {
                 return 'Error'
             })
-        if (response?.status == 200) {
+        if (response?.status >= 200 && response?.status < 300) {
             return response
         } else {
             return 'Error'
@@ -90,7 +89,7 @@ export const delete_request = async ({ target, body }) => {
             .catch((e) => {
                 return 'Error'
             })
-        if (response?.status == 200) {
+        if (response?.status >= 200 && response?.status < 300) {
             return response
         } else {
             return 'Error'
@@ -105,7 +104,7 @@ export const patch_request = async ({ target, body }) => {
             .catch((e) => {
                 return 'Error'
             })
-        if (response?.status == 200) {
+        if (response?.status >= 200 && response?.status < 300) {
             return response
         } else {
             return 'Error'
@@ -121,7 +120,7 @@ export const patchwithoutType = async ({ target, body }) => {
             .catch((e) => {
                 return 'Error'
             })
-        if (response?.status == 200) {
+        if (response?.status >= 200 && response?.status < 300) {
             return response
         } else {
             return 'Error'

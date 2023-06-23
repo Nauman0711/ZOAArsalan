@@ -20,6 +20,26 @@ const styles = StyleSheet.create({
         marginVertical: 30,
         ...shadow
     },
+    btnContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+    btnStyle: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        paddingVertical: 8,
+        borderRadius: 10,
+        flex: 1
+    },
+    selectedBtn: {
+        backgroundColor: colors.green
+    },
+    btnTitle: {
+        color: colors.white
+    },
+    container: {
+        flex: 1
+    },
     textInputStyle: {
         // flex: 1
     },
@@ -28,6 +48,20 @@ const styles = StyleSheet.create({
         fontWeight: '700',
         marginVertical: 20,
         color: colors.headerBlackColor
+    },
+    itemContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginRight: 10,
+        justifyContent: 'center'
+    },
+    thumbnailImage: {
+        height: 60,
+        width: 60,
+        borderRadius: 10
+    },
+    progressBar: {
+        position: 'absolute'
     }
 })
 export default styles

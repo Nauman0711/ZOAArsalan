@@ -21,7 +21,6 @@ export const dateFuction = (timestamp) => {
     const year = date.getFullYear();
     return `${day}.${month}.${year}`
 }
-
 export const updateProfilePicture = async () => {
     launchImageLibrary({ mediaType: 'photo', quality: 1, selectionLimit: 13 }, async response => {
         if (response.didCancel) {
@@ -51,7 +50,6 @@ export const updateProfilePicture = async () => {
             })
             const responses = await Promise.all(uploadPromises);
             store.dispatch(setSelectedFiles(responses))
-            console.log(JSON.stringify(responses));
         }
     });
 }

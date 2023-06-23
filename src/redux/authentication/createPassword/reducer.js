@@ -5,7 +5,7 @@ const slice = createSlice({
     initialState: {
         oldPassword: '',
         newPassword: '',
-        cPassword: '',
+        confirmPassword: '',
         error: '',
         isLoading: false
     },
@@ -17,7 +17,7 @@ const slice = createSlice({
             state.newPassword = action.payload;
         }),
         setCPassword: ((state, action) => {
-            state.cPassword = action.payload;
+            state.confirmPassword = action.payload;
         }),
         setIsLoading: ((state, action) => {
             state.isLoading = action.payload;

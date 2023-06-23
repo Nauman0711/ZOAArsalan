@@ -1,20 +1,24 @@
 import React, { useEffect } from "react";
 import { FlatList, Text, TextInput, View } from "react-native";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import ActivityLoader from "../../components/loader/activityLoader";
 import { SearchIcon } from "../../assets/images/svg";
 import ScreenContainer from "../../components/screenContainer";
 import styles from "./styles";
 import { onMount } from "../../redux/leads/action";
 import Content from "./components/content";
+import ModalView from "./components/modalView";
+import { setIsShowModal } from "../../redux/leads/reducer";
 
 const Leads = ({ }) => {
-    const { leadsData, isLoading } = useSelector((state) => state.leadsReducer);
+    const dispatch = useDispatch()
+    const { leadsData, isLoading, isShowModal } = useSelector((state) => state.leadsReducer);
     useEffect(() => {
         onMount()
     }, [])
     return (
         <ScreenContainer>
+            <ModalView onClose={() => dispatch(setIsShowModal(false))} visible={isShowModal} />
             <ActivityLoader animating={isLoading} />
             <View style={styles.searchBarContainer}>
                 <SearchIcon />
@@ -25,7 +29,7 @@ const Leads = ({ }) => {
                 <FlatList
                     data={leadsData}
                     keyExtractor={({ id }) => id}
-                    renderItem={({item}) => <Content {...item} />}
+                    renderItem={({ item }) => <Content {...item} />}
                 />
             </>
         </ScreenContainer>

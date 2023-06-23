@@ -10,6 +10,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { onMountUserProfile } from './src/redux/profile/action';
 import Navigation from './src/routes/navigation';
 import Leads from './src/screens/leads';
+import Submissions from './src/screens/submission';
 
 
 
@@ -22,7 +23,7 @@ function App() {
   }, [userData?.token])
   return (
     <Navigation />
-    // <Leads />
+    // <Submissions />
   );
 }
 

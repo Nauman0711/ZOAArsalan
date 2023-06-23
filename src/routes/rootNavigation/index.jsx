@@ -15,3 +15,6 @@ export function reset(routes, index) {
         routes,
     });
 }
+export function goBack() {
+    navigationRef.current?.goBack();
+  }
