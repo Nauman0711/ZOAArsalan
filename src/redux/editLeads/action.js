@@ -13,7 +13,6 @@ export const onMount = async ({ leadId }) => {
 const fetchData = async ({ leadId }) => {
     const response = await getReadOnlyLeadsApi({ leadId })
     if (response !== "Error") {
-        console.log(JSON.stringify(response.data), "this is aajajajajj");
         store.dispatch(setFiles(response.data?.data?.files))
         store.dispatch(setNotes(response.data?.data?.note))
     }
