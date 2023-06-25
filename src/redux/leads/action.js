@@ -1,7 +1,7 @@
 import { launchImageLibrary } from 'react-native-image-picker';
 import { store } from "../store/store";
 import { getLeadsApi, uploadFileApi } from "../../api/endPoints/leads/authenticationController";
-import { setFiles, setIsLoading, setLeadsData, setSelectedFiles, updateFileProgress } from "./reducer";
+import { addLeadsData, setCurrentPage, setFiles, setIsLoading, setLeadsData, setRefreshing, setSelectedFiles, setTotalPages, updateFileProgress } from "./reducer";
 
 export const onMount = async () => {
     store.dispatch(setIsLoading(true))
@@ -12,7 +12,14 @@ const fetchData = async () => {
     const response = await getLeadsApi({})
     if (response !== "Error") {
         store.dispatch(setLeadsData(response.data?.data))
+        store.dispatch(setCurrentPage(response.data.currentPage))
+        store.dispatch(setTotalPages(response.data.pageCount))
     }
+}
+export const onRefresh = async () => {
+    store.dispatch(setRefreshing(true))
+    await fetchData()
+    store.dispatch(setRefreshing(false))
 }
 export const dateFuction = (timestamp) => {
     const date = new Date(timestamp);
@@ -52,4 +59,22 @@ export const updateProfilePicture = async () => {
             store.dispatch(setSelectedFiles(responses))
         }
     });
+}
+export const loadMore = async () => {
+    console.log("ye chal rha hai");
+    const { currentPage, totalPages } = store.getState().leadsReducer
+    if (currentPage <= totalPages) {
+        const page = currentPage + 1
+        const params = {
+            page
+        }
+        const response = await getLeadsApi({ params })
+        if (response !== 'Error') {
+            console.log(JSON.stringify(response.data), "api response");
+            store.dispatch(addLeadsData(response.data?.data))
+            store.dispatch(setCurrentPage(response.data.currentPage))
+            store.dispatch(setTotalPages(response.data.pageCount))
+        }
+    }
+    // }
 }

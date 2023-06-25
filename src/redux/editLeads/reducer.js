@@ -7,6 +7,8 @@ const initialState = {
     files: [],
     buttons: ['Data', 'Comments'],
     comments: [],
+    openImageIndex: 0,
+    openImage: false,
     comment: '',
     selectedBtn: 'Data',
     isLoading: false,
@@ -31,6 +33,12 @@ const slice = createSlice({
         setButtons: ((state, action) => {
             state.buttons = action.payload;
         }),
+        setOpenImageIndex: ((state, action) => {
+            state.openImageIndex = action.payload;
+        }),
+        setOpenImage: ((state, action) => {
+            state.openImage = action.payload;
+        }),
         setComments: ((state, action) => {
             state.comments = action.payload;
         }),
@@ -43,6 +51,12 @@ const slice = createSlice({
         }),
         setSelectedBtn: ((state, action) => {
             state.selectedBtn = action.payload;
+        }),
+        addSelectedFiles: ((state, action) => {
+            state.selectedFiles = [...state.selectedFiles, ...action.payload];
+        }),
+        addFiles: ((state, action) => {
+            state.files = [...state.files, ...action.payload];
         }),
         setIsLoading: ((state, action) => {
             state.isLoading = action.payload;
@@ -62,6 +76,9 @@ const slice = createSlice({
                 return file;
             });
         }),
+        deleteFiles: ((state, action) => {
+            state.files = state.files.filter(obj => obj.filename !== action.payload)
+        }),
         clearFileProgress: ((state) => {
             state.files = [];
             state.selectedFiles = []
@@ -73,5 +90,5 @@ const slice = createSlice({
         })
     }
 });
-export const { setPhotosData, setIsLoading, setNotes, setFiles, setSelectedFiles, updateFileProgress, setCommentIsLoading, clearFileProgress, setIsUploaded, setButtons, setSelectedBtn, setComment, setComments, setUpdatedComments } = slice.actions;
+export const { setPhotosData, setIsLoading, setNotes, setFiles, setSelectedFiles, updateFileProgress, setCommentIsLoading, clearFileProgress, setIsUploaded, setButtons, setSelectedBtn, setComment, setComments, setUpdatedComments, setOpenImage, setOpenImageIndex, deleteFiles, addSelectedFiles, addFiles } = slice.actions;
 export const editLeadsReducer = slice.reducer;

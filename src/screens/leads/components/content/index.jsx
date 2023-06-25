@@ -13,12 +13,15 @@ const Content = (props) => {
     const handleClick = useCallback(() => {
         navigate('EditLeads', props)
     }, [])
+    const handleContainerNavigation = useCallback(() => {
+        navigate('Submissions', { ...props })
+    }, [props])
     const handleLongPress = useCallback(() => {
         dispatch(setModalData(props))
         dispatch(setIsShowModal(true))
     }, [props])
     return (
-        <TouchableOpacity activeOpacity={0.8} onLongPress={handleLongPress} style={styles.container}>
+        <TouchableOpacity onPress={handleContainerNavigation} activeOpacity={0.8} onLongPress={handleLongPress} style={styles.container}>
             <View style={styles.internalColumContainer}>
                 <Text style={styles.title}>Booking Reference</Text>
                 <Text style={styles.title}>Lead Name</Text>

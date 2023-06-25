@@ -1,7 +1,7 @@
 import { launchImageLibrary } from 'react-native-image-picker';
 import { store } from "../store/store";
-import { getCommentsApi, getReadOnlyLeadsApi, postCommentApi, submitLeadsApi, uploadFileApi } from "../../api/endPoints/leads/authenticationController";
-import { setIsLoading, setFiles, setSelectedFiles, updateFileProgress, setNotes, setIsUploaded, setCommentIsLoading, setComments, setUpdatedComments } from "./reducer";
+import { deleteImageApi, getCommentsApi, getReadOnlyLeadsApi, postCommentApi, submitLeadsApi, uploadFileApi } from "../../api/endPoints/leads/authenticationController";
+import { setIsLoading, setFiles, setSelectedFiles, updateFileProgress, setNotes, setIsUploaded, setCommentIsLoading, setComments, setUpdatedComments, deleteFiles, addSelectedFiles, addFiles } from "./reducer";
 import { goBack } from '../../routes/rootNavigation';
 
 export const onMount = async ({ leadId }) => {
@@ -25,7 +25,8 @@ export const dateFuction = (timestamp) => {
     return `${day}.${month}.${year}`
 }
 export const updateProfilePicture = async () => {
-    launchImageLibrary({ mediaType: 'photo', quality: 1, selectionLimit: 13 }, async response => {
+    try {
+        const response = await launchImageLibrary({ mediaType: 'mixed', quality: 1, selectionLimit: 13 })
         if (response.didCancel) {
             console.log('Photo uploading is cancelled');
             return null
@@ -34,7 +35,7 @@ export const updateProfilePicture = async () => {
             return null
         }
         else {
-            await store.dispatch(setFiles(response.assets))
+            store.dispatch(addFiles(response.assets))
             store.dispatch(setIsUploaded(false))
             const uploadPromises = response.assets.map((file) => {
                 const body = new FormData();
@@ -54,10 +55,13 @@ export const updateProfilePicture = async () => {
                 return response
             })
             const responses = await Promise.all(uploadPromises);
-            store.dispatch(setSelectedFiles(responses))
+            store.dispatch(addSelectedFiles(responses))
             store.dispatch(setIsUploaded(true))
         }
-    });
+
+    } catch (error) {
+        console.log(JSON.stringify(error));
+    }
 }
 export const shouldDisable = () => {
     const { note, files, isUploaded } = store.getState().editLeadsReducer
@@ -75,6 +79,7 @@ export const onSubmit = async ({ leadCode, leadId }) => {
         leadId,
         leadCode
     }
+    console.log(JSON.stringify(selectedFiles));
     store.dispatch(setIsLoading(true))
     const response = await submitLeadsApi({ body })
     if (response !== "Error") {
@@ -117,4 +122,12 @@ export const shouldDisablePostComment = ({ leadDataId, leadCode, leadId, comment
     } else {
         return true
     }
+}
+export const deleteImageAction = async (filename) => {
+    store.dispatch(setIsLoading(true))
+    const response = await deleteImageApi({ filename })
+    if (response !== "Error") {
+        store.dispatch(deleteFiles(filename))
+    }
+    store.dispatch(setIsLoading(false))
 }

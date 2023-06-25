@@ -1,7 +1,7 @@
-import { get_request, post_request, post_request_formData } from "../../methods";
-import { getCommentsTarget, getImagesTarget, leadTarget, submitLeadsTarget, uploadFileTarget } from "./targets";
-export const getLeadsApi = async () => {
-    const data = await get_request({ target: leadTarget });
+import { get_request, post_request, post_request_formData, delete_request } from "../../methods";
+import { deleteImageTarget, getCommentsTarget, leadTarget, submitLeadsTarget, uploadFileTarget } from "./targets";
+export const getLeadsApi = async ({params}) => {
+    const data = await get_request({ target: leadTarget, params });
     return data;
 }
 export const uploadFileApi = async ({ body, onUploadProgress }) => {
@@ -26,5 +26,9 @@ export const getCommentsApi = async ({ params }) => {
 }
 export const postCommentApi = async ({ body }) => {
     const data = await post_request({ target: getCommentsTarget, body });
+    return data;
+}
+export const deleteImageApi = async ({ filename }) => {
+    const data = await delete_request({ target: deleteImageTarget + filename });
     return data;
 }

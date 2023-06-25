@@ -87,6 +87,7 @@ export const delete_request = async ({ target, body }) => {
     try {
         const response = await instance().delete(target, body)
             .catch((e) => {
+                console.log(JSON.stringify(e));
                 return 'Error'
             })
         if (response?.status >= 200 && response?.status < 300) {

@@ -6,24 +6,17 @@
  */
 
 import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { onMountUserProfile } from './src/redux/profile/action';
 import Navigation from './src/routes/navigation';
-import Leads from './src/screens/leads';
-import Submissions from './src/screens/submission';
-
-
 
 function App() {
-  const dispatch = useDispatch()
   const { userData } = useSelector((state) => state.userReducer);
   useEffect(() => {
-    // dispatch({ type: 'userLogout' })
     onMountUserProfile()
   }, [userData?.token])
   return (
     <Navigation />
-    // <Submissions />
   );
 }
 

@@ -5,7 +5,10 @@ const slice = createSlice({
     initialState: {
         leadsData: [],
         error: '',
+        refreshing: false,
         isShowModal: false,
+        currentPage: '',
+        totalPages: '',
         modalData: {},
         isLoading: false
     },
@@ -13,19 +16,31 @@ const slice = createSlice({
         setLeadsData: ((state, action) => {
             state.leadsData = action.payload;
         }),
+        addLeadsData: ((state, action) => {
+            state.leadsData = [...state.leadsData, ...action.payload];
+        }),
         setIsLoading: ((state, action) => {
             state.isLoading = action.payload;
         }),
         setIsShowModal: ((state, action) => {
             state.isShowModal = action.payload;
         }),
+        setCurrentPage: ((state, action) => {
+            state.currentPage = action.payload;
+        }),
+        setTotalPages: ((state, action) => {
+            state.totalPages = action.payload;
+        }),
         setModalData: ((state, action) => {
             state.modalData = action.payload;
+        }),
+        setRefreshing: ((state, action) => {
+            state.refreshing = action.payload;
         }),
         setErrorText: ((state, action) => {
             state.error = action.payload;
         }),
     },
 });
-export const { setLeadsData, setIsLoading, setErrorText, setIsShowModal, setModalData } = slice.actions;
+export const { setLeadsData, setIsLoading, setErrorText, setIsShowModal, setModalData, setCurrentPage, setTotalPages, setRefreshing, addLeadsData } = slice.actions;
 export const leadsReducer = slice.reducer;

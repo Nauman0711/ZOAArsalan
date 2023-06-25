@@ -61,7 +61,8 @@ const styles = StyleSheet.create({
     thumbnailImage: {
         height: 60,
         width: 60,
-        borderRadius: 10
+        borderRadius: 10,
+        backgroundColor: colors.contentBackgroundColor
     },
     progressBar: {
         position: 'absolute'

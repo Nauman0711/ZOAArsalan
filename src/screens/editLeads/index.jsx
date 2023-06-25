@@ -12,7 +12,7 @@ import ConstantData from "./components/constantData";
 const EditLeads = ({ navigation, route }) => {
     const dispatch = useDispatch()
     const { code, id, view, leadCode, leadId } = route?.params
-    const { selectedBtn } = useSelector((state) => state.editLeadsReducer);
+    const { selectedBtn, openImageIndex, openImage, isLoading, files, note, } = useSelector((state) => state.editLeadsReducer);
     useEffect(() => {
         navigation.setOptions({
             headerBackTitle: code,
@@ -26,7 +26,7 @@ const EditLeads = ({ navigation, route }) => {
                     <>
                         <TabButtons />
                         {selectedBtn == 'Data' ?
-                            <ConstantData view={view} leadCode={code} leadId={id} />
+                            <ConstantData openImageIndex={openImageIndex} openImage={openImage} isLoading={isLoading} files={files} note={note} view={view} leadCode={code} leadId={id} />
                             :
                             <Comments leadDataId={id} leadCode={leadCode} leadId={leadId} />
                         }

@@ -12,6 +12,20 @@ const styles = StyleSheet.create({
         height: 60,
         width: 60,
         borderRadius: 10,
+        backgroundColor: colors.contentBackgroundColor
+    },
+    thumbnailVideo: {
+        height: 60,
+        width: 60,
+        borderRadius: 10,
+        backgroundColor: colors.black
+    },
+    playBtn: {
+        position: 'absolute'
+    },
+    itemContainer: {
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     itemSeprator: {
         margin: 5
