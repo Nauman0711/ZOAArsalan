@@ -61,7 +61,6 @@ export const updateProfilePicture = async () => {
     });
 }
 export const loadMore = async () => {
-    console.log("ye chal rha hai");
     const { currentPage, totalPages } = store.getState().leadsReducer
     if (currentPage <= totalPages) {
         const page = currentPage + 1
@@ -76,5 +75,4 @@ export const loadMore = async () => {
             store.dispatch(setTotalPages(response.data.pageCount))
         }
     }
-    // }
 }

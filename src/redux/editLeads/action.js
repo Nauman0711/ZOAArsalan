@@ -1,7 +1,7 @@
 import { launchImageLibrary } from 'react-native-image-picker';
 import { store } from "../store/store";
 import { deleteImageApi, getCommentsApi, getReadOnlyLeadsApi, postCommentApi, submitLeadsApi, uploadFileApi } from "../../api/endPoints/leads/authenticationController";
-import { setIsLoading, setFiles, setSelectedFiles, updateFileProgress, setNotes, setIsUploaded, setCommentIsLoading, setComments, setUpdatedComments, deleteFiles, addSelectedFiles, addFiles } from "./reducer";
+import { setIsLoading, setFiles, updateFileProgress, setNotes, setIsUploaded, setCommentIsLoading, setComments, setUpdatedComments, deleteFiles, addSelectedFiles, addFiles, setIsRefreshComment, setRefreshing } from "./reducer";
 import { goBack } from '../../routes/rootNavigation';
 
 export const onMount = async ({ leadId }) => {
@@ -16,6 +16,11 @@ const fetchData = async ({ leadId }) => {
         store.dispatch(setFiles(response.data?.data?.files))
         store.dispatch(setNotes(response.data?.data?.note))
     }
+}
+export const onRefresh = async ({ leadId }) => {
+    store.dispatch(setRefreshing(true))
+    await fetchData({ leadId })
+    store.dispatch(setRefreshing(false))
 }
 export const dateFuction = (timestamp) => {
     const date = new Date(timestamp);
@@ -79,7 +84,6 @@ export const onSubmit = async ({ leadCode, leadId }) => {
         leadId,
         leadCode
     }
-    console.log(JSON.stringify(selectedFiles));
     store.dispatch(setIsLoading(true))
     const response = await submitLeadsApi({ body })
     if (response !== "Error") {
@@ -89,15 +93,23 @@ export const onSubmit = async ({ leadCode, leadId }) => {
     store.dispatch(setIsLoading(false))
 }
 export const getCommentsAction = async (leadDataId) => {
+    store.dispatch(setCommentIsLoading(true))
+    await fetchComments(leadDataId)
+    store.dispatch(setCommentIsLoading(false))
+}
+export const onRefreshComment = async (leadDataId) => {
+    store.dispatch(setIsRefreshComment(true))
+    await fetchComments(leadDataId)
+    store.dispatch(setIsRefreshComment(false))
+}
+export const fetchComments = async (leadDataId) => {
     const params = {
         leadDataId
     }
-    store.dispatch(setCommentIsLoading(true))
     const response = await getCommentsApi({ params })
     if (response !== "Error") {
         store.dispatch(setComments(response.data?.data))
     }
-    store.dispatch(setCommentIsLoading(false))
 }
 export const postComment = async ({ leadDataId, leadCode, leadId, comment }) => {
     const body = {

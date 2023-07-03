@@ -7,6 +7,8 @@ const initialState = {
     files: [],
     buttons: ['Data', 'Comments'],
     comments: [],
+    isRefreshComment: false,
+    refreshing: false,
     openImageIndex: 0,
     openImage: false,
     comment: '',
@@ -27,6 +29,12 @@ const slice = createSlice({
         setFiles: ((state, action) => {
             state.files = action.payload;
         }),
+        setIsRefreshComment: ((state, action) => {
+            state.isRefreshComment = action.payload;
+        }),
+        setRefreshing: ((state, action) => {
+            state.refreshing = action.payload;
+        }),
         setNotes: ((state, action) => {
             state.note = action.payload;
         }),
@@ -44,7 +52,7 @@ const slice = createSlice({
         }),
         setUpdatedComments: ((state, action) => {
             state.comment = ""
-            state.comments = [...state.comments, action.payload];
+            state.comments = [action.payload, ...state.comments];
         }),
         setComment: ((state, action) => {
             state.comment = action.payload;
@@ -90,5 +98,5 @@ const slice = createSlice({
         })
     }
 });
-export const { setPhotosData, setIsLoading, setNotes, setFiles, setSelectedFiles, updateFileProgress, setCommentIsLoading, clearFileProgress, setIsUploaded, setButtons, setSelectedBtn, setComment, setComments, setUpdatedComments, setOpenImage, setOpenImageIndex, deleteFiles, addSelectedFiles, addFiles } = slice.actions;
+export const { setPhotosData, setIsLoading, setNotes, setFiles, setSelectedFiles, updateFileProgress, setCommentIsLoading, clearFileProgress, setIsUploaded, setButtons, setSelectedBtn, setComment, setComments, setUpdatedComments, setOpenImage, setOpenImageIndex, deleteFiles, addSelectedFiles, addFiles, setIsRefreshComment, setRefreshing } = slice.actions;
 export const editLeadsReducer = slice.reducer;

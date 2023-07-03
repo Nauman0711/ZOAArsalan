@@ -13,10 +13,12 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         flexDirection: 'row',
         alignItems: 'center',
-        padding: 10
+        paddingHorizontal: 10,
+        height: 50
     },
     textInput: {
-        flex:1
+        flex:1,
+        color: colors.fontBlack
     },
     keyboardAvoidView: {
         // flex: 1,

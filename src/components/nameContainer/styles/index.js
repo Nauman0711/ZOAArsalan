@@ -10,7 +10,10 @@ const styles = StyleSheet.create({
         borderRadius: 4
     },
     container: {
-        padding: 10,
+        height: 40,
+        width: 40,
+        justifyContent: 'center',
+        alignItems: 'center',
         borderRadius: 100,
         backgroundColor: colors.green,
     },

@@ -13,7 +13,7 @@ const DropDownSubmission = (props) => {
     return (
         <TouchableOpacity activeOpacity={0.8} onPress={handleNavigation} style={styles.container}>
             <View activeOpacity={0.8} style={styles.titleContainer}>
-                <NameContainer />
+                <NameContainer name={user.username} />
                 <View style={styles.nameContainer}>
                     <View>
                         <Text style={styles.nameTitle}>{user.username}</Text>

@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import ActivityLoader from "../../components/loader/activityLoader";
 import { SearchIcon } from "../../assets/images/svg";
 import ScreenContainer from "../../components/screenContainer";
+import colors from "../../theme/color";
 import styles from "./styles";
 import { loadMore, onMount, onRefresh } from "../../redux/leads/action";
 import Content from "./components/content";
@@ -22,7 +23,12 @@ const Leads = ({ }) => {
             <ActivityLoader animating={isLoading} />
             <View style={styles.searchBarContainer}>
                 <SearchIcon />
-                <TextInput placeholder="Search" onChangeText={(e) => console.log(e)} style={styles.textInputStyle} />
+                <TextInput
+                    placeholderTextColor={colors.placeholderColor}
+                    placeholder="Search"
+                    onChangeText={(e) => console.log(e)}
+                    style={styles.textInputStyle}
+                />
             </View>
             <View style={{ flex: 1 }}>
                 <Text style={styles.headerTitle}>My Leads</Text>

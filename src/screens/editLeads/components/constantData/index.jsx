@@ -4,13 +4,13 @@ import { useDispatch, useSelector } from "react-redux";
 import AntDesign from 'react-native-vector-icons/AntDesign'
 import { baseURL } from "../../../../api/baseURL";
 import ActivityLoader from "../../../../components/loader/activityLoader";
-import { deleteImageAction, onMount } from "../../../../redux/editLeads/action";
+import { deleteImageAction, onMount, onRefresh } from "../../../../redux/editLeads/action";
 import { setOpenImage, setOpenImageIndex } from "../../../../redux/editLeads/reducer";
 import styles from "./styles";
 import colors from "../../../../theme/color";
 import ModalViewGallery from "./components/modalViewGallery";
 
-const ConstantData = ({ leadId, isLoading, files, note, openImageIndex, openImage, }) => {
+const ConstantData = ({ leadId, isLoading, files, note, openImageIndex, openImage, refreshing }) => {
     const dispatch = useDispatch()
     useEffect(() => {
         onMount({ leadId })
@@ -48,6 +48,8 @@ const ConstantData = ({ leadId, isLoading, files, note, openImageIndex, openImag
                 <View>
                     <FlatList
                         data={files}
+                        refreshing={refreshing}
+                        onRefresh={() =>onRefresh({leadId})}
                         style={styles.style}
                         ItemSeparatorComponent={<View style={styles.itemSeprator} />}
                         horizontal

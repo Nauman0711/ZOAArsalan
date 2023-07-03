@@ -13,7 +13,7 @@ const shadow = {
 }
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: colors.whiteOpacity,
+        backgroundColor: colors.white,
         flexDirection: 'row',
         paddingVertical: 15,
         paddingHorizontal: 20,

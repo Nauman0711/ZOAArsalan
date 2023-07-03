@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { FlatList, TextInput, View, Image } from "react-native";
 import * as Progress from 'react-native-progress';
 import { useDispatch, useSelector } from "react-redux";
@@ -19,7 +19,14 @@ const Data = ({ leadCode, leadId }) => {
             <ActivityLoader animating={isLoading} />
             <View style={styles.container}>
                 <View style={styles.searchBarContainer}>
-                    <TextInput value={note} multiline={true} placeholder="Note..." onChangeText={(e) => dispatch(setNotes(e))} style={styles.textInputStyle} />
+                    <TextInput
+                        value={note}
+                        multiline={true}
+                        placeholderTextColor={colors.placeholderColor}
+                        placeholder="Note..."
+                        onChangeText={(e) => dispatch(setNotes(e))}
+                        style={styles.textInputStyle}
+                    />
                 </View>
                 <AddBtnIcon onPress={updateProfilePicture} />
                 <View>

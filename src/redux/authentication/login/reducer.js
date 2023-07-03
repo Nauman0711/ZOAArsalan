@@ -3,8 +3,10 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 const slice = createSlice({
     name: "login",
     initialState: {
-        email: 'directors@cmsl.com',
-        password: 'Director@cmsl%1234??',
+        // email: 'directors@cmsl.com',
+        // password: 'Director@cmsl%1234??',
+        email: '',
+        password: '',
         error: '',
         isLoading: false
     },

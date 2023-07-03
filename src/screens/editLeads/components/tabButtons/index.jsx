@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { FlatList, TextInput, View, Text, Image, Keyboard, TouchableOpacity } from "react-native";
+import React from "react";
+import { View, Text, TouchableOpacity } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { setSelectedBtn } from "../../../../redux/editLeads/reducer";
 import styles from "./styles";
@@ -12,7 +12,7 @@ const TabButtons = ({ }) => {
         <View style={styles.btnContainer}>
             {buttons.map((item) => (
                 <TouchableOpacity onPress={() => dispatch(setSelectedBtn(item))} key={item} style={[styles.itemStyle, item == selectedBtn && styles.selectedBtn]}>
-                    <Text style={[item === selectedBtn && styles.title]}>{item}</Text>
+                    <Text style={[styles.title, item === selectedBtn && styles.selectedTitle]}>{item}</Text>
                 </TouchableOpacity>
             ))}
         </View>

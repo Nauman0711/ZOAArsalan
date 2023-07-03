@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
         flex: 1
     },
     textInputStyle: {
-        // flex: 1
+        color: colors.fontBlack
     },
     headerTitle: {
         fontSize: 24,

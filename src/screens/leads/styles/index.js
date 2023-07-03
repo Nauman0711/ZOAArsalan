@@ -6,11 +6,14 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         backgroundColor: colors.searchBackgroundColor,
-        padding: 10,
+        height: 50,
+        paddingHorizontal: 10,
+        marginTop:20,
         borderRadius: 32
     },
     textInputStyle: {
-        flex: 1
+        flex: 1,
+        color: colors.fontBlack
     },
     headerTitle: {
         fontSize: 24,

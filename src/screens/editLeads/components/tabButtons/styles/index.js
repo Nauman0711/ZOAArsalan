@@ -2,7 +2,6 @@ import { StyleSheet } from "react-native";
 import colors from "../../../../../theme/color";
 
 const styles = StyleSheet.create({
-
     btnContainer: {
         flexDirection: 'row',
         alignItems: 'center',
@@ -18,8 +17,11 @@ const styles = StyleSheet.create({
     selectedBtn: {
         backgroundColor: colors.green
     },
-    title: {
+    selectedTitle: {
         color: colors.white
+    },
+    title: {
+        color: colors.fontBlack
     },
 })
 export default styles
