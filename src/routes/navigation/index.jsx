@@ -1,11 +1,9 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { useSelector } from 'react-redux';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { navigationRef } from '../rootNavigation';
 import SplashScreen from '../../screens/splash';
 import Login from '../../screens/authentications/login';
-import Leads from '../../screens/leads';
 import EditLeads from '../../screens/editLeads';
 import Tabs from '../bottomNavigation';
 import ChangePassword from '../../screens/authentications/changePassword';
