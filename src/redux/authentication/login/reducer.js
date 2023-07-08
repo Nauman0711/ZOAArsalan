@@ -5,8 +5,11 @@ const slice = createSlice({
     initialState: {
         // email: 'directors@cmsl.com',
         // password: 'Director@cmsl%1234??',
+        // email: 'naseer.ahmed@zoaenergysolutions.co.uk',
+        // password: 'Naseer@zoa',
         email: '',
         password: '',
+        isSecure: true,
         error: '',
         isLoading: false
     },
@@ -20,10 +23,13 @@ const slice = createSlice({
         setIsLoading: ((state, action) => {
             state.isLoading = action.payload;
         }),
+        setIsSecure: ((state, action) => {
+            state.isSecure = !state.isSecure;
+        }),
         setErrorText: ((state, action) => {
             state.error = action.payload;
         }),
     },
 });
-export const { setEmail, setIsLoading, setPassword, setErrorText } = slice.actions;
+export const { setEmail, setIsLoading, setPassword, setIsSecure, setErrorText } = slice.actions;
 export const loginReducer = slice.reducer;

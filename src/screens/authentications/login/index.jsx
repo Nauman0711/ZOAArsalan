@@ -1,18 +1,20 @@
 import React from "react";
 import { View, KeyboardAvoidingView } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
+import Entypo from 'react-native-vector-icons/Entypo';
 import { HeaderIconSvg } from "../../../assets/images/svg";
 import BtnGreen from "../../../components/buttons/btnGreen";
 import GenericFormInput from "../../../components/formInput/genericFormInput";
 import ActivityLoader from "../../../components/loader/activityLoader";
 import ScreenContainer from "../../../components/screenContainer";
 import { onSubmit, shouldDisabled } from "../../../redux/authentication/login/action";
-import { setEmail, setErrorText, setPassword } from "../../../redux/authentication/login/reducer";
+import { setEmail, setErrorText, setPassword, setIsSecure } from "../../../redux/authentication/login/reducer";
 import styles from "./styles";
+import colors from "../../../theme/color";
 
 const Login = ({ navigation }) => {
     const dispatch = useDispatch()
-    const { email, password, isLoading, error } = useSelector((state) => state.loginReducer);
+    const { email, password, isLoading, isSecure, error } = useSelector((state) => state.loginReducer);
     return (
         <ScreenContainer>
             <ActivityLoader animating={isLoading} />
@@ -34,7 +36,8 @@ const Login = ({ navigation }) => {
                         title="Password"
                         onChangeText={(e) => { dispatch(setErrorText("")), dispatch(setPassword(e)) }}
                         placeholder="Please enter your password"
-                        secureTextEntry={true}
+                        secureTextEntry={isSecure}
+                        RightChild={<Entypo onPress={() => dispatch(setIsSecure())} size={22} color={colors.green} name={isSecure ? 'eye-with-line' : "eye"} />}
                         value={password}
                         error={error == "Please Enter Your Password" ? "Please Enter Your Password" : error == 'Password Must be atleast 8 Characters Long' ? "Password Must be atleast 8 Characters Long" : null}
                     />

@@ -9,6 +9,7 @@ import { setOpenImage, setOpenImageIndex } from "../../../../redux/editLeads/red
 import styles from "./styles";
 import colors from "../../../../theme/color";
 import ModalViewGallery from "./components/modalViewGallery";
+import NoData from "../../../../components/noData";
 
 const ConstantData = ({ leadId, isLoading, files, note, openImageIndex, openImage, refreshing }) => {
     const dispatch = useDispatch()
@@ -49,7 +50,8 @@ const ConstantData = ({ leadId, isLoading, files, note, openImageIndex, openImag
                     <FlatList
                         data={files}
                         refreshing={refreshing}
-                        onRefresh={() =>onRefresh({leadId})}
+                        onRefresh={() => onRefresh({ leadId })}
+                        // ListEmptyComponent={!isLoading && <NoData />}
                         style={styles.style}
                         ItemSeparatorComponent={<View style={styles.itemSeprator} />}
                         horizontal

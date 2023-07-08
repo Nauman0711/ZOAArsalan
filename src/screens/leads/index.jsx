@@ -10,6 +10,7 @@ import { loadMore, onMount, onRefresh } from "../../redux/leads/action";
 import Content from "./components/content";
 import ModalView from "./components/modalView";
 import { setIsShowModal } from "../../redux/leads/reducer";
+import NoData from "../../components/noData";
 
 const Leads = ({ }) => {
     const dispatch = useDispatch()
@@ -36,6 +37,7 @@ const Leads = ({ }) => {
                     data={leadsData}
                     refreshing={refreshing}
                     onRefresh={onRefresh}
+                    ListEmptyComponent={!isLoading && <NoData />}
                     keyExtractor={({ id }) => id}
                     onEndReachedThreshold={0.1}
                     onEndReached={loadMore}

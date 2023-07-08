@@ -3,6 +3,7 @@ import { FlatList, TextInput, View, Platform, KeyboardAvoidingView } from "react
 import Feather from 'react-native-vector-icons/Feather'
 import { useSelector, useDispatch } from "react-redux";
 import ActivityLoader from "../../../../components/loader/activityLoader";
+import NoData from "../../../../components/noData";
 import { onRefreshComment, postComment, shouldDisablePostComment } from "../../../../redux/editLeads/action";
 import { setComment } from "../../../../redux/editLeads/reducer";
 import colors from "../../../../theme/color";
@@ -18,7 +19,8 @@ const Comments = ({ leadDataId, leadCode, leadId }) => {
             <FlatList
                 data={comments}
                 refreshing={isRefreshComment}
-                onRefresh={() =>onRefreshComment(leadDataId)}
+                ListEmptyComponent={!commentIsLoading && <NoData />}
+                onRefresh={() => onRefreshComment(leadDataId)}
                 ItemSeparatorComponent={<View style={styles.seprator} />}
                 renderItem={({ item }) => <Content {...item} />}
             />

@@ -16,6 +16,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         flexDirection: 'row',
         borderColor: colors.borderGray,
+        alignItems:'center',
         backgroundColor: colors.inputFieldBackgroundAshWhite,
         paddingHorizontal: 10
     },

@@ -5,6 +5,7 @@ import { setUserData } from "../../user/reducer";
 import { setErrorText, setIsLoading } from "./reducer";
 import { loginValidation } from "../../../utillis/authentication/loginValidation";
 import { replace } from "../../../routes/rootNavigation";
+import { showToast } from '../../../components/toastMessage/simpleToast';
 
 export const onSubmit = async () => {
     const { email, password } = store.getState().loginReducer
@@ -18,6 +19,7 @@ export const onSubmit = async () => {
         store.dispatch(setIsLoading(true))
         const response = await loginApi({ body })
         if (response !== "Error") {
+            showToast(response.data.error)
             store.dispatch(setIsLoading(false))
             store.dispatch(setUserData(response.data))
             replace('Tabs')
