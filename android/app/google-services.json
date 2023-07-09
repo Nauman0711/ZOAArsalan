@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "598920546081",
+    "project_id": "zoa-f46a4",
+    "storage_bucket": "zoa-f46a4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:598920546081:android:f496471d6d5f82cff36060",
+        "android_client_info": {
+          "package_name": "com.zao"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "598920546081-ouuu8a17n26eqqg0qhagaskr9jlr9gnh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.zao",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "598920546081-ajg97003qe5tlh2gih3siriohigggvne.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgn9PEVkDS07upEfxsJJlgAPkzwhXrErk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "598920546081-ajg97003qe5tlh2gih3siriohigggvne.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

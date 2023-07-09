@@ -5,10 +5,12 @@ const slice = createSlice({
     initialState: {
         // email: 'directors@cmsl.com',
         // password: 'Director@cmsl%1234??',
+        email: 'aliimran@cmsl.com',
+        password: '12345678',
         // email: 'naseer.ahmed@zoaenergysolutions.co.uk',
         // password: 'Naseer@zoa',
-        email: '',
-        password: '',
+        // email: '',
+        // password: '',
         isSecure: true,
         error: '',
         isLoading: false
