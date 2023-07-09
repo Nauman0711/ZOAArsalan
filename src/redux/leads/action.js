@@ -69,7 +69,6 @@ export const loadMore = async () => {
         }
         const response = await getLeadsApi({ params })
         if (response !== 'Error') {
-            console.log(JSON.stringify(response.data), "api response");
             store.dispatch(addLeadsData(response.data?.data))
             store.dispatch(setCurrentPage(response.data.currentPage))
             store.dispatch(setTotalPages(response.data.pageCount))

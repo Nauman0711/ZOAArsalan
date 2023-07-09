@@ -20,7 +20,6 @@ export const onSubmit = async () => {
             fcmToken,
             platform: Platform.OS
         }
-        console.log(body, "this is the body");
         store.dispatch(setIsLoading(true))
         const response = await loginApi({ body })
         if (response !== "Error") {

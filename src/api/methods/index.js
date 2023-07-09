@@ -43,7 +43,6 @@ export const get_request = async ({ target, params }) => {
                 return 'Error'
             })
         if (response?.status >= 200 && response?.status < 300) {
-            console.log(JSON.stringify(response));
             return response
         } else {
             return 'Error'
