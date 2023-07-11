@@ -16,7 +16,7 @@ const Submissions = ({ navigation, route }) => {
     }, [])
     useEffect(() => {
         navigation.setOptions({
-            headerBackTitle: code,
+            headerTitle: code,
         });
     }, [navigation]);
     return (

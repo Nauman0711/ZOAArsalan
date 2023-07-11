@@ -62,7 +62,7 @@ export const updateProfilePicture = async () => {
 }
 export const loadMore = async () => {
     const { currentPage, totalPages } = store.getState().leadsReducer
-    if (currentPage <= totalPages) {
+    if (currentPage + 1 < totalPages) {
         const page = currentPage + 1
         const params = {
             page

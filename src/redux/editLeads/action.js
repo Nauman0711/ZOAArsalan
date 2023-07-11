@@ -7,7 +7,6 @@ import { goBack } from '../../routes/rootNavigation';
 export const onMount = async ({ leadId }) => {
     store.dispatch(setIsLoading(true))
     await fetchData({ leadId })
-    getCommentsAction(leadId)
     store.dispatch(setIsLoading(false))
 }
 const fetchData = async ({ leadId }) => {

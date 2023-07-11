@@ -10,6 +10,7 @@ import { leadsReducer } from '../leads/reducer';
 import { editLeadsReducer } from '../editLeads/reducer';
 import { createPasswordReducer } from '../authentication/createPassword/reducer';
 import { submissionReducer } from '../submissions/reducer';
+import { notificationsReducer } from '../notifications/reducer';
 const persistConfig = {
     key: 'root',
     storage: AsyncStorage,
@@ -22,7 +23,8 @@ const appReducer = combineReducers({
     leadsReducer,
     editLeadsReducer,
     createPasswordReducer,
-    submissionReducer
+    submissionReducer,
+    notificationsReducer
 })
 const rootReducer = (state, action) => {
     if (action.type === 'userLogout') {

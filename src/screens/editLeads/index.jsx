@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { View } from "react-native";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import ScreenContainer from "../../components/screenContainer";
 import styles from "./styles";
 import TabButtons from "./components/tabButtons";
@@ -10,12 +10,11 @@ import { resetStates } from "../../redux/editLeads/action";
 import ConstantData from "./components/constantData";
 
 const EditLeads = ({ navigation, route }) => {
-    const dispatch = useDispatch()
     const { code, id, view, leadCode, leadId } = route?.params
     const { selectedBtn, openImageIndex, openImage, isLoading, files, note, refreshing } = useSelector((state) => state.editLeadsReducer);
     useEffect(() => {
         navigation.setOptions({
-            headerBackTitle: code,
+            headerTitle: code || leadCode,
         });
         return resetStates
     }, [navigation]);

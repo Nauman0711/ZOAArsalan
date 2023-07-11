@@ -9,7 +9,6 @@ import { setOpenImage, setOpenImageIndex } from "../../../../redux/editLeads/red
 import styles from "./styles";
 import colors from "../../../../theme/color";
 import ModalViewGallery from "./components/modalViewGallery";
-import NoData from "../../../../components/noData";
 
 const ConstantData = ({ leadId, isLoading, files, note, openImageIndex, openImage, refreshing }) => {
     const dispatch = useDispatch()

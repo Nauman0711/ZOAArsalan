@@ -21,7 +21,7 @@ const Navigation = () => {
                 <Stack.Screen options={{ headerTitle: '', headerBackTitle: 'Change Password?', headerTintColor: colors.fontBlack }} name={"ChangePassword"} component={ChangePassword} />
                 <Stack.Screen options={{ headerShown: false }} name={"Tabs"} component={Tabs} />
                 <Stack.Screen options={{ headerShown: false }} name={"SuccessfullyUpdated"} component={SuccessfullyUpdated} />
-                <Stack.Screen options={{ headerTitle: '', headerShadowVisible: false, headerTintColor: colors.fontBlack }} name={"EditLeads"} component={EditLeads} />
+                <Stack.Screen options={{  headerShadowVisible: false, headerTintColor: colors.fontBlack }} name={"EditLeads"} component={EditLeads} />
                 <Stack.Screen options={{ headerTitle: '', headerShadowVisible: false, headerTintColor: colors.fontBlack }} name={"Submissions"} component={Submissions} />
             </Stack.Navigator>
         </NavigationContainer>

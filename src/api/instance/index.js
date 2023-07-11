@@ -23,7 +23,6 @@ export const instanceWithoutHeader = () => axios.create({
 export const instanceFormData = ({ onUploadProgress }) => createInstance({
     headers: {
         "Content-type": "multipart/form-data",
-        // x_client_type: Platform.OS
     },
     transformRequest: { transformRequest: (data) => { return data } },
     onUploadProgress: { onUploadProgress }

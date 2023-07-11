@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FlatList, TextInput, View, Platform, KeyboardAvoidingView } from "react-native";
 import Feather from 'react-native-vector-icons/Feather'
 import { useSelector, useDispatch } from "react-redux";
 import ActivityLoader from "../../../../components/loader/activityLoader";
 import NoData from "../../../../components/noData";
-import { onRefreshComment, postComment, shouldDisablePostComment } from "../../../../redux/editLeads/action";
+import { getCommentsAction, onRefreshComment, postComment, shouldDisablePostComment } from "../../../../redux/editLeads/action";
 import { setComment } from "../../../../redux/editLeads/reducer";
 import colors from "../../../../theme/color";
 import Content from "./components/content";
@@ -13,6 +13,9 @@ import styles from "./styles";
 const Comments = ({ leadDataId, leadCode, leadId }) => {
     const dispatch = useDispatch()
     const { comment, comments, commentIsLoading, isRefreshComment } = useSelector((state) => state.editLeadsReducer);
+    useEffect(() => {
+        getCommentsAction(leadDataId)
+    }, [])
     return (
         <View style={styles.container}>
             <ActivityLoader animating={commentIsLoading} />

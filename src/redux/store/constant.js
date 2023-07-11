@@ -3,7 +3,8 @@ export const blacklist = [
     'leadsReducer',
     'editLeadsReducer',
     'createPasswordReducer',
-    'submissionReducer'
+    'submissionReducer',
+    'notificationsReducer'
 ]
 
 export const whitelist = [
