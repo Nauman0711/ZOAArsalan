@@ -7,6 +7,7 @@ const slice = createSlice({
         refreshing: false,
         currentPage: '',
         totalPages: '',
+        notificationCount: 0,
         isLoading: false
 
     },
@@ -29,7 +30,10 @@ const slice = createSlice({
         setRefreshing: ((state, action) => {
             state.refreshing = action.payload;
         }),
+        addNotificationCount: ((state, action) => {
+            state.notificationCount = state.notificationCount + action.payload;
+        }),
     },
 });
-export const { setNotifications, setCurrentPage, setIsLoading, setRefreshing, setTotalPages, addNotifications } = slice.actions;
+export const { setNotifications, setCurrentPage, setIsLoading, setRefreshing, setTotalPages, addNotifications, addNotificationCount } = slice.actions;
 export const notificationsReducer = slice.reducer;

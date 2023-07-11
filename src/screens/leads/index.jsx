@@ -15,9 +15,11 @@ import NoData from "../../components/noData";
 const Leads = ({ }) => {
     const dispatch = useDispatch()
     const { leadsData, isLoading, isShowModal, refreshing } = useSelector((state) => state.leadsReducer);
+    const { notificationCount } = useSelector((state) => state.notificationsReducer);
+
     useEffect(() => {
         onMount()
-    }, [])
+    }, [notificationCount])
     return (
         <ScreenContainer>
             <ModalView onClose={() => dispatch(setIsShowModal(false))} visible={isShowModal} />

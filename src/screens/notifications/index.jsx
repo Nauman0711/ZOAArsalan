@@ -7,10 +7,10 @@ import { loadMore, onMount, onRefresh } from "../../redux/notifications/action";
 import Content from "./components/content";
 import styles from "./styles";
 const Notifications = () => {
-    const { notifications, isLoading, refreshing } = useSelector((state) => state.notificationsReducer);
+    const { notifications, isLoading, refreshing, notificationCount } = useSelector((state) => state.notificationsReducer);
     useEffect(() => {
         onMount()
-    }, [])
+    }, [notificationCount])
     return (
         <ScreenContainer>
             <ActivityLoader animating={isLoading} />
