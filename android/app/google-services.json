@@ -41,6 +41,43 @@
           ]
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:598920546081:android:34cde3ce0fabedb0f36060",
+        "android_client_info": {
+          "package_name": "com.zoa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "598920546081-s33v03p56o3j80t5i9qpueb6qmm6rmcj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.zoa",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "598920546081-ajg97003qe5tlh2gih3siriohigggvne.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgn9PEVkDS07upEfxsJJlgAPkzwhXrErk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "598920546081-ajg97003qe5tlh2gih3siriohigggvne.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
     }
   ],
   "configuration_version": "1"

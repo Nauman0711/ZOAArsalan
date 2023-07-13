@@ -1,5 +1,5 @@
 import { store } from "../store/store";
-import { getLeadsSubmissionApi } from "../../api/endPoints/leads/authenticationController";
+import { getLeadsSubmissionApi } from "../../api/endPoints/leads/leadsController";
 import { setIsLoading, setLeadsSubmission } from "./reducer";
 
 export const onMount = async ({ id }) => {

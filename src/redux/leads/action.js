@@ -1,7 +1,8 @@
 import { launchImageLibrary } from 'react-native-image-picker';
 import { store } from "../store/store";
-import { getLeadsApi, uploadFileApi } from "../../api/endPoints/leads/authenticationController";
-import { addLeadsData, setCurrentPage, setFiles, setIsLoading, setLeadsData, setRefreshing, setSelectedFiles, setTotalPages, updateFileProgress } from "./reducer";
+import { getLeadsApi, getLeadsInfoApi, leadStatusApi, uploadFileApi } from "../../api/endPoints/leads/leadsController";
+import { addLeadsData, setCurrentPage, setFiles, setIsLoading, setIsLoadingLeadsStatus, setIsStatusShowModal, setLeadInfo, setLeadsData, setReason, setRefreshing, setSelectedFiles, setStatus, setTotalPages, updateFileProgress } from "./reducer";
+import { showToast } from '../../components/toastMessage/simpleToast';
 
 export const onMount = async () => {
     store.dispatch(setIsLoading(true))
@@ -74,4 +75,35 @@ export const loadMore = async () => {
             store.dispatch(setTotalPages(response.data.pageCount))
         }
     }
+}
+export const leadInfoAction = async (id) => {
+    const response = await getLeadsInfoApi({ id })
+    if (response !== "Error") {
+        store.dispatch(setLeadInfo(response.data?.data))
+    }
+}
+export const shouldEnableReason = () => {
+    const { reason } = store.getState().leadsReducer
+    if (reason) {
+        return true
+    } else {
+        return false
+    }
+}
+export const onSubmitLeadStatus = async () => {
+    const { modalData, status, reason: statusReason } = store.getState().leadsReducer
+    const body = {
+        status,
+        statusReason
+    }
+    store.dispatch(setIsLoadingLeadsStatus(true))
+    const response = await leadStatusApi({ body, id: modalData?.id })
+    if (response !== "Error") {
+        showToast("Action Perform Successfully")
+        store.dispatch(setReason(''))
+        store.dispatch(setStatus(''))
+        onRefresh()
+    }
+    store.dispatch(setIsStatusShowModal(false))
+    store.dispatch(setIsLoadingLeadsStatus(false))
 }

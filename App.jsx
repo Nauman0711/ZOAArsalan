@@ -11,6 +11,7 @@ import { PermissionsAndroid } from 'react-native';
 import { onMountUserProfile } from './src/redux/profile/action';
 import Navigation from './src/routes/navigation';
 import { getNotifications } from './src/utillis/firebase/getNotifications';
+import LeadsManagement from './src/screens/leadsManagement';
 
 function App() {
   const { userData } = useSelector((state) => state.userReducer);

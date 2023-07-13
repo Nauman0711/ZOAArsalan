@@ -14,7 +14,8 @@ const Content = (props) => {
         navigate('EditLeads', props)
     }, [])
     const handleContainerNavigation = useCallback(() => {
-        navigate('Submissions', { ...props })
+        // navigate('Submissions', { ...props })
+        navigate('LeadsManagement', props)
     }, [props])
     const handleLongPress = useCallback(() => {
         dispatch(setModalData(props))

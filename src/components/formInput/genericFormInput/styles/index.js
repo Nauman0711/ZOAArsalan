@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
         marginTop: 20,
     },
     style: {
-        paddingVertical: 15,
+        height: 50,
         paddingHorizontal: 2,
         color: colors.fontBlack,
         flex:1

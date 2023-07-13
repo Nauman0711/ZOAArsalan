@@ -1,6 +1,6 @@
 import { launchImageLibrary } from 'react-native-image-picker';
 import { store } from "../store/store";
-import { deleteImageApi, getCommentsApi, getReadOnlyLeadsApi, postCommentApi, submitLeadsApi, uploadFileApi } from "../../api/endPoints/leads/authenticationController";
+import { deleteImageApi, getCommentsApi, getReadOnlyLeadsApi, postCommentApi, submitLeadsApi, uploadFileApi } from "../../api/endPoints/leads/leadsController";
 import { setIsLoading, setFiles, updateFileProgress, setNotes, setIsUploaded, setCommentIsLoading, setComments, setUpdatedComments, deleteFiles, addSelectedFiles, addFiles, setIsRefreshComment, setRefreshing } from "./reducer";
 import { goBack } from '../../routes/rootNavigation';
 

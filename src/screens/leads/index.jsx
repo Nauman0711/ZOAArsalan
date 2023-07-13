@@ -9,12 +9,13 @@ import styles from "./styles";
 import { loadMore, onMount, onRefresh } from "../../redux/leads/action";
 import Content from "./components/content";
 import ModalView from "./components/modalView";
-import { setIsShowModal } from "../../redux/leads/reducer";
+import { setIsShowModal, setIsStatusShowModal } from "../../redux/leads/reducer";
 import NoData from "../../components/noData";
+import ModalViewInput from "./components/textInputModal";
 
 const Leads = ({ }) => {
     const dispatch = useDispatch()
-    const { leadsData, isLoading, isShowModal, refreshing } = useSelector((state) => state.leadsReducer);
+    const { leadsData, isLoading, isShowModal, refreshing, isShowStatusModal } = useSelector((state) => state.leadsReducer);
     const { notificationCount } = useSelector((state) => state.notificationsReducer);
 
     useEffect(() => {
@@ -23,6 +24,7 @@ const Leads = ({ }) => {
     return (
         <ScreenContainer>
             <ModalView onClose={() => dispatch(setIsShowModal(false))} visible={isShowModal} />
+            <ModalViewInput onClose={() => dispatch(setIsStatusShowModal(false))} visible={isShowStatusModal} />
             <ActivityLoader animating={isLoading} />
             <View style={styles.searchBarContainer}>
                 <SearchIcon />
