@@ -6,7 +6,7 @@ import { navigate } from "../../../../routes/rootNavigation";
 import styles from "./styles";
 
 const DropDownSubmission = (props) => {
-    const { note, user, createdAt } = props
+    const { note, user, createdAt, status } = props
     const handleNavigation = useCallback(() => {
         navigate('EditLeads', { ...props, view: true })
     }, [])
@@ -15,10 +15,11 @@ const DropDownSubmission = (props) => {
             <View activeOpacity={0.8} style={styles.titleContainer}>
                 <NameContainer name={user.username} />
                 <View style={styles.nameContainer}>
-                    <View>
+                    <View style={styles.nameSubContainer}>
                         <Text style={styles.nameTitle}>{user.username}</Text>
                         <Text style={styles.description}>{note}</Text>
                     </View>
+                    <Text style={styles.description}>{status}</Text>
                     <Text style={styles.timeText}>{dateFuction(createdAt)}</Text>
                 </View>
             </View>

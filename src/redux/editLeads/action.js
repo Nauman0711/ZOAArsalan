@@ -101,9 +101,9 @@ export const onRefreshComment = async (leadDataId) => {
     await fetchComments(leadDataId)
     store.dispatch(setIsRefreshComment(false))
 }
-export const fetchComments = async (leadDataId) => {
+export const fetchComments = async (leadId) => {
     const params = {
-        leadDataId
+        leadId
     }
     const response = await getCommentsApi({ params })
     if (response !== "Error") {

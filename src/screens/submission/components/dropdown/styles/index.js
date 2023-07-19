@@ -22,19 +22,24 @@ const styles = StyleSheet.create({
     nameContainer: {
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'space-between',
+        // justifyContent: 'space-between',
+        flex: 1
+    },
+    nameSubContainer: {
         flex: 1
     },
     description: {
         marginLeft: 10,
-        fontSize: 14,
+        fontSize: 12,
         color: colors.fontGray,
-        fontWeight: '300'
+        fontWeight: '300',
+        flex:1
     },
     timeText: {
         textAlign: 'center',
         fontSize: 12,
-        color: colors.fontGray
+        color: colors.fontGray,
+        flex:1
     },
     itemView: {
         color: colors.blue,

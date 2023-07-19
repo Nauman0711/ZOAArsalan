@@ -14,7 +14,7 @@ const Comments = ({ leadDataId, leadCode, leadId }) => {
     const dispatch = useDispatch()
     const { comment, comments, commentIsLoading, isRefreshComment } = useSelector((state) => state.editLeadsReducer);
     useEffect(() => {
-        getCommentsAction(leadDataId)
+        getCommentsAction(leadId)
     }, [])
     return (
         <View style={styles.container}>
